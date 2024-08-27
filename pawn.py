@@ -24,3 +24,19 @@ class Board:
         self.positions[6][5] = Pawn("White") # White
         self.positions[6][6] = Pawn("White") # White
         self.positions[6][7] = Pawn("White") # White
+
+    # forma del tablero
+
+    def __str__(self):
+        board_str = ""
+        for row in self.__positions__:
+            for cell in row:
+                if cell is not None:
+                    board_str += str(cell)
+                else:
+                    board_str += " "
+            board_str += "\n"
+        return board_str
+        
+    def get_piece(self, row, col):
+        return self.__positions__[row][col]

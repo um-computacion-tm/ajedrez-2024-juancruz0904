@@ -1,4 +1,6 @@
-from pieces import Pawn
+# Posicion del PAWN
+
+from pieces import Pawn, Piece
 
 class Board:
     def __init__(self):
@@ -25,7 +27,7 @@ class Board:
         self.positions[6][6] = Pawn("White") # White
         self.positions[6][7] = Pawn("White") # White
 
-    # forma del tablero
+# Forma del tablero
 
     def __str__(self):
         board_str = ""
@@ -40,3 +42,30 @@ class Board:
         
     def get_piece(self, row, col):
         return self.__positions__[row][col]
+    
+# Movimiento del PAWN
+
+class Pawn(Piece):
+    def __init__(self, color):
+        super().__init__(color)
+        self.symbol = 'P' if color == 'WHITE' else 'p'
+
+    def is_valid_move(self, from_row, from_col, to_row, to_col, board):
+        direction = -1 if self.color == 'WHITE' else 1
+        start_row = 6 if self.color == 'WHITE' else 1
+
+        # Movimiento hacia adelante sin captura
+        if from_col == to_col:
+            # Movimiento de 1 casilla
+            if to_row == from_row + direction and board[to_row][to_col] is None:
+                return True
+            # Movimiento de 2 casillas desde la posición inicial
+            if from_row == start_row and to_row == from_row + 2 * direction and board[from_row + direction][from_col] is None and board[to_row][to_col] is None:
+                return True
+        
+        # Captura diagonal del tablero
+        if abs(from_col - to_col) == 1 and to_row == from_row + direction:
+            if board[to_row][to_col] is not None and board[to_row][to_col].color != self.color:                
+                return True
+
+        return False

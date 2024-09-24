@@ -20,3 +20,20 @@
 
 # 09/09/24 - Verificacion de la posicion y movimiento en el test_bishop.py
 
+# 14/09/24 - Verificacion de la posicion y movimiento en el test_queen_2.py
+
+# 15/09/24 - Verificacion de la posicion y movimiento en el test_horse.py
+
+# 17/09/24 - Verificacion de la posicion y movimiento en el test_rook.py
+
+# 18/09/24 - Correcciones del test_pawn.py
+
+# 19/09/24 - Posiciones de las piesas y forma del tablero en el board.py
+
+# 20/09/24 - Reglas iniciales del ajedrez en chess.py
+
+# 21/09/24 - Evaluacion y movimiento del rey en el board.py
+
+# 22/09/24 - Movimiento de la reina en el board.py
+
+# 23/09/24 - Movimiento de la torre en el board.py

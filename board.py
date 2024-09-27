@@ -205,3 +205,21 @@ class Rook(Piece):
 
         # Verifica si la casilla de destino está vacía o contiene una pieza enemiga  
         return board[to_row][to_col] is None or board[to_row][to_col].color != self.color
+    
+# Movimiento del CABALLO
+
+class Knight(Piece):
+    def __init__(self, color):
+        super().__init__(color)
+        self.symbol = 'H' if color == 'WHITE' else 'h'
+
+    def is_valid_move(self, from_row, from_col, to_row, to_col, board):
+        # El caballo se mueve en forma de "L"
+        row_diff = abs(to_row - from_row)
+        col_diff = abs(to_col - from_col)
+        if (row_diff == 2 and col_diff == 1) or (row_diff == 1 and col_diff == 2):
+            # El movimiento es válido si la casilla de destino está vacía o contiene una pieza del oponente
+            destination_piece = board[to_row][to_col]
+            if destination_piece is None or destination_piece.color != self.color:
+                return True
+        return False

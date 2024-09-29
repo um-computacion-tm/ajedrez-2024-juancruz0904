@@ -223,3 +223,25 @@ class Knight(Piece):
             if destination_piece is None or destination_piece.color != self.color:
                 return True
         return False
+    
+# Movimiento del ALFIL
+
+class Bishop(Piece):
+    def __init__(self, color):
+        super().__init__(color)
+        self.symbol = 'B' if color == 'WHITE' else 'b'
+
+    def is_valid_move(self, from_row, from_col, to_row, to_col, board):
+        # El alfil se mueve en diagonal, por lo que la diferencia entre filas y columnas debe ser igual
+        if abs(to_row - from_row) == abs(to_col - from_col):
+            # Verificar que no haya piezas en el camino
+            step_row = 1 if to_row > from_row else -1
+            step_col = 1 if to_col > from_col else -1
+            for i in range(1, abs(to_row - from_row)):
+                if board[from_row + i * step_row][from_col + i * step_col] is not None:
+                    return False
+            # El movimiento es válido si la casilla de destino está vacía o contiene una pieza del oponente
+            destination_piece = board[to_row][to_col]
+            if destination_piece is None or destination_piece.color != self.color:
+                return True
+        return False

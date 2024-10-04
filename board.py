@@ -51,6 +51,11 @@ class Board:
     
 # Evaluacion y movimiento del REY
 
+class King(Piece):
+    def __init__(self, color):
+        super().__init__(color)
+        self.symbol = 'K' if color == 'WHITE' else 'k'
+
     def move_piece(self, from_row, from_col, to_row, to_col):
         piece = self.get_piece(from_row, from_col)
         if piece and piece.is_valid_move(from_row, from_col, to_row, to_col, self.board):
@@ -108,7 +113,6 @@ class Board:
                     return True
 
         return False
-   
 
 class Chess:
     def __init__(self):
@@ -208,7 +212,7 @@ class Rook(Piece):
     
 # Movimiento del CABALLO
 
-class Knight(Piece):
+class Horse(Piece):
     def __init__(self, color):
         super().__init__(color)
         self.symbol = 'H' if color == 'WHITE' else 'h'

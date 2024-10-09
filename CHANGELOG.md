@@ -37,3 +37,25 @@
 # 22/09/24 - Movimiento de la reina en el board.py
 
 # 23/09/24 - Movimiento de la torre en el board.py
+
+# 26/09/24 - Movimiento del caballo en el board.py
+
+# 28/09/24 - Movimiento del alfil en el board.py
+
+# 29/09/24 - Movimiento del peon en el board.py
+
+# 30/09/24 - Verificacion de la posicion y movimiento del rey y la reina en test_board.py
+
+# 01/10/24 - Verificacion de la posicion y movimiento de la torre y el alfil en test_board.py
+
+# 02/10/24 - Verificacion de la posicion y movimiento del caballo y el peon en test_board.py
+
+# 03/10/24 - Correcciones en el king.py y el board.py
+
+# 04/10/24 - Posicion y movimiento del rey y la reina en el pieces.py
+
+# 05/10/24 - Posicion y movimiento de la torre en el pieces.py
+
+# 06/10/24 - Posicion y movimiento del caballo en el pieces.py
+
+# 09/10/24 - Posicion y movimiento del alfil en el pieces.py

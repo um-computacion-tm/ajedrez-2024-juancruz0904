@@ -1,6 +1,7 @@
 # Posicion del REY
 
-from pieces import King, Piece
+import horse
+from pieces import King, Piece, pieces
 
 class Board:
     def __init__(self):
@@ -12,6 +13,7 @@ class Board:
             self.positions.append(col)
         self.positions[0][4] = King("Black") # Black
         self.positions[7][4] = King("White") # White
+
 
 # Forma del tablero
 
@@ -30,11 +32,6 @@ class Board:
         return self.__positions__[row][col]
     
 # Movimiento del REY
-
-class King(Piece):
-    def __init__(self, color):
-        super().__init__(color)
-        self.symbol = 'K' if color == 'WHITE' else 'k'
 
     def move_piece(self, from_row, from_col, to_row, to_col):
         piece = self.get_piece(from_row, from_col)

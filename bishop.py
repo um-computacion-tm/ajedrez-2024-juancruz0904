@@ -1,6 +1,6 @@
 # posicion del ALFIL
 
-from pieces import Bishop, Piece
+from pieces import Piece, Bishop
 
 class Board:
     def __init__(self):

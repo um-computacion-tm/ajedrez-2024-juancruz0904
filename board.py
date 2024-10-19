@@ -3,6 +3,15 @@ class Board:
         # Inicializamos un tablero de 8x8 con None en todas las posiciones
         self.board = [[None for _ in range(8)] for _ in range(8)]
         self.setup_board()
+        
+class Piece:
+    def __init__(self, color):
+        self.color = color
+
+class King(Piece):
+    def __init__(self, color):
+        super().__init__(color)
+        self.symbol = 'K' if color == 'WHITE' else 'k'
 
 # Posiciones de las piesas
 
@@ -31,6 +40,17 @@ class Board:
         # Colocamos los reyes en su posición inicial
         self.board[0][4] = King('BLACK')
         self.board[7][4] = King('WHITE')
+        
+    def __str__(self):
+        board_str = ""
+        for row in self.board:
+            for piece in row:
+                if piece is None:
+                    board_str += ". "
+                else:
+                    board_str += str(piece) + " "
+            board_str += "\n"
+        return board_str   
 
 # Construye el tablero
 

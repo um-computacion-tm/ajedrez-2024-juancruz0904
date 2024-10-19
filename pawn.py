@@ -1,6 +1,6 @@
 # Posicion del PAWN
 
-from pieces import Pawn, Piece
+from pieces import Piece, Pawn
 
 class Board:
     def __init__(self):
@@ -43,7 +43,7 @@ class Board:
     def get_piece(self, row, col):
         return self.__positions__[row][col]
     
-# Movimiento del PAWN
+# Movimiento del PEON
 
 class Pawn(Piece):
     def __init__(self, color):

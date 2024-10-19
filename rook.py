@@ -1,7 +1,6 @@
-from chess import Chess
-from pieces import Piece, Rook
+# Posicion de la TORRE
 
-    # posicion de las TORRES
+from pieces import Piece, Rook
 
 class Board:
     def __init__(self):
@@ -32,7 +31,7 @@ class Board:
     def get_piece(self, row, col):
         return self.__positions__[row][col]
     
-    # Movimiento de la TORRE
+# Movimiento de la TORRE
 
 class Rook(Piece):
     def _init_(self, color):

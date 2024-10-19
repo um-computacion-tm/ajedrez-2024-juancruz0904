@@ -59,3 +59,13 @@
 # 06/10/24 - Posicion y movimiento del caballo en el pieces.py
 
 # 09/10/24 - Posicion y movimiento del alfil en el pieces.py
+
+# 10/10/24 - Posicion y movimiento del peon en el pieces.py
+
+# 12/10/24 - Correcciones en el king.py
+
+# 13/10/24 - Correcciones en el test_king.py
+
+# 15/10/24 - Correcciones en el pieces.py
+
+# 16/10/24 - archivo de test_main.py

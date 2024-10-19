@@ -1,5 +1,5 @@
 import unittest
-from ajedres import Board, Bishop
+from ajedres import Board, Bishop # type: ignore
 
 class TestAjedrez(unittest.TestCase):
 

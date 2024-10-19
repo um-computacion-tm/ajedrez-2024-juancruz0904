@@ -1,186 +1,102 @@
-# Verificacion de la posicion y movimiento del REY
-
 import unittest
-from ajedres import Board, King # type: ignore
 
-class TestAjedrez(unittest.TestCase):
+from board import Board
 
-    def setUp(self):
-        self.board = Board()
-        # Coloca un rey blanco en (7, 4)
-        self.board.board[7][4] = King('WHITE') 
-        # Coloca otro rey blanco en (6, 4)
-        self.board.board[6][4] = King('WHITE') 
+class Pawn:
+    def __init__(self, color):
+        self.color = color
 
-    def test_valid_move(self):
-        result = self.board.move_piece(7, 4, 6, 4)  # Movimiento válido del rey
-        print(f"Resultado del movimiento válido: {result}")  # Para depuración
-        self.assertTrue(result)
+    def __str__(self):
+        return "P" if self.color == 'WHITE' else "p"
 
-    def test_invalid_move(self):
-        result = self.board.move_piece(7, 4, 5, 4)  # Movimiento inválido del rey
-        print(f"Resultado del movimiento inválido: {result}")  # Para depuración
-        self.assertFalse(result)
+class Rook:
+    def __init__(self, color):
+        self.color = color
 
-if __name__ == "__main__":
-    unittest.main()
+    def __str__(self):
+        return "R" if self.color == 'WHITE' else "r"
 
-# Verificacion de la posicion y movimiento de la REINA
+class Horse:
+    def __init__(self, color):
+        self.color = color
 
-import unittest
-from ajedres import Board, Queen # type: ignore
+    def __str__(self):
+        return "H" if self.color == 'WHITE' else "h"
 
-class TestAjedrez(unittest.TestCase):
+class Bishop:
+    def __init__(self, color):
+        self.color = color
 
-    def setUp(self):
-        self.board = Board()
-        # Coloca un reina blanco en (7, 3)
-        self.board.board[7][3] = Queen('WHITE') 
-        # Coloca otro reina blanco en (6, 3)
-        self.board.board[6][3] = Queen('WHITE') 
+    def __str__(self):
+        return "B" if self.color == 'WHITE' else "b"
 
-    def test_valid_move(self):
-        result = self.board.move_piece(7, 3, 6, 3)  # Movimiento válido de la reina
-        print(f"Resultado del movimiento válido: {result}")  # Para depuración
-        self.assertTrue(result)
+class Queen:
+    def __init__(self, color):
+        self.color = color
 
-    def test_invalid_move(self):
-        result = self.board.move_piece(7, 3, 5, 4)  # Movimiento inválido de la reina
-        print(f"Resultado del movimiento inválido: {result}")  # Para depuración
-        self.assertFalse(result)
+    def __str__(self):
+        return "Q" if self.color == 'WHITE' else "q"
 
-if __name__ == "__main__":
-    unittest.main()
+class King:
+    def __init__(self, color):
+        self.color = color
 
-import unittest
-from ajedres import Board, Queen # type: ignore
+    def __str__(self):
+        return "K" if self.color == 'WHITE' else "k"
 
-class TestAjedrez(unittest.TestCase):
+class TestBoardSetup(unittest.TestCase):
 
-    def setUp(self):
-        self.board = Board()
-        # Coloca un reina blanco en (7, 3)
-        self.board.board[7][3] = Queen('WHITE') 
-        # Coloca otro reina blanco en (6, 3)
-        self.board.board[6][3] = Queen('WHITE') 
+    def test_initial_setup(self):
+        board = Board()
 
-    def test_valid_move(self):
-        result = self.board.move_piece(7, 3, 6, 2)  # Movimiento válido de la reina
-        print(f"Resultado del movimiento válido: {result}")  # Para depuración
-        self.assertTrue(result)
+        # Verificar peones
+        for i in range(8):
+            self.assertIsInstance(board.get_piece(1, i), Pawn)
+            self.assertEqual(board.get_piece(1, i).color, 'BLACK')
+            self.assertIsInstance(board.get_piece(6, i), Pawn)
+            self.assertEqual(board.get_piece(6, i).color, 'WHITE')
 
-    def test_invalid_move(self):
-        result = self.board.move_piece(7, 3, 5, 4)  # Movimiento inválido de la reina
-        print(f"Resultado del movimiento inválido: {result}")  # Para depuración
-        self.assertFalse(result)
+        # Verificar torres
+        self.assertIsInstance(board.get_piece(0, 0), Rook)
+        self.assertEqual(board.get_piece(0, 0).color, 'BLACK')
+        self.assertIsInstance(board.get_piece(0, 7), Rook)
+        self.assertEqual(board.get_piece(0, 7).color, 'BLACK')
+        self.assertIsInstance(board.get_piece(7, 0), Rook)
+        self.assertEqual(board.get_piece(7, 0).color, 'WHITE')
+        self.assertIsInstance(board.get_piece(7, 7), Rook)
+        self.assertEqual(board.get_piece(7, 7).color, 'WHITE')
 
-if __name__ == "__main__":
-    unittest.main()
+        # Verificar caballos
+        self.assertIsInstance(board.get_piece(0, 1), Horse)
+        self.assertEqual(board.get_piece(0, 1).color, 'BLACK')
+        self.assertIsInstance(board.get_piece(0, 6), Horse)
+        self.assertEqual(board.get_piece(0, 6).color, 'BLACK')
+        self.assertIsInstance(board.get_piece(7, 1), Horse)
+        self.assertEqual(board.get_piece(7, 1).color, 'WHITE')
+        self.assertIsInstance(board.get_piece(7, 6), Horse)
+        self.assertEqual(board.get_piece(7, 6).color, 'WHITE')
 
-# Verificacion de la posicion y movimiento de la TORRE
+        # Verificar alfiles
+        self.assertIsInstance(board.get_piece(0, 2), Bishop)
+        self.assertEqual(board.get_piece(0, 2).color, 'BLACK')
+        self.assertIsInstance(board.get_piece(0, 5), Bishop)
+        self.assertEqual(board.get_piece(0, 5).color, 'BLACK')
+        self.assertIsInstance(board.get_piece(7, 2), Bishop)
+        self.assertEqual(board.get_piece(7, 2).color, 'WHITE')
+        self.assertIsInstance(board.get_piece(7, 5), Bishop)
+        self.assertEqual(board.get_piece(7, 5).color, 'WHITE')
 
-import unittest
-from ajedres import Board, Rook # type: ignore
+        # Verificar reinas
+        self.assertIsInstance(board.get_piece(0, 3), Queen)
+        self.assertEqual(board.get_piece(0, 3).color, 'BLACK')
+        self.assertIsInstance(board.get_piece(7, 3), Queen)
+        self.assertEqual(board.get_piece(7, 3).color, 'WHITE')
 
-class TestAjedrez(unittest.TestCase):
+        # Verificar reyes
+        self.assertIsInstance(board.get_piece(0, 4), King)
+        self.assertEqual(board.get_piece(0, 4).color, 'BLACK')
+        self.assertIsInstance(board.get_piece(7, 4), King)
+        self.assertEqual(board.get_piece(7, 4).color, 'WHITE')
 
-    def setUp(self):
-        self.board = Board()
-        # Coloca un torre blanco en (7, 0)
-        self.board.board[7][0] = Rook('WHITE') 
-        # Coloca otro torre blanco en (7, 1)
-        self.board.board[7][1] = Rook('WHITE') 
-
-    def test_valid_move(self):
-        result = self.board.move_piece(7, 0, 5, 0)  # Movimiento válido de la torre
-        print(f"Resultado del movimiento válido: {result}")  # Para depuración
-        self.assertTrue(result)
-
-    def test_invalid_move(self):
-        result = self.board.move_piece(7, 0, 6, 1)  # Movimiento inválido de la torre
-        print(f"Resultado del movimiento inválido: {result}")  # Para depuración
-        self.assertFalse(result)
-
-if __name__ == "__main__":
-    unittest.main()
-
-# Verificacion de la posicion y movimiento del ALFIL
-
-import unittest
-from ajedres import Board, Bishop # type: ignore
-
-class TestAjedrez(unittest.TestCase):
-
-    def setUp(self):
-        self.board = Board()
-        # Coloca un alfil blanco en (7, 2)
-        self.board.board[7][2] = Bishop('WHITE') 
-        # Coloca otro alfil blanco en (6, 2)
-        self.board.board[6][2] = Bishop('WHITE') 
-
-    def test_valid_move(self):
-        result = self.board.move_piece(7, 2, 6, 3)  # Movimiento válido del alfil
-        print(f"Resultado del movimiento válido: {result}")  # Para depuración
-        self.assertTrue(result)
-
-    def test_invalid_move(self):
-        result = self.board.move_piece(7, 2, 7, 3)  # Movimiento inválido del alfil
-        print(f"Resultado del movimiento inválido: {result}")  # Para depuración
-        self.assertFalse(result)
-
-if __name__ == "__main__":
-    unittest.main()
-
-# Verificacion de la posicion y movimiento del CABALLO
-
-import unittest
-from ajedres import Board, Horse # type: ignore
-
-class TestAjedrez(unittest.TestCase):
-
-    def setUp(self):
-        self.board = Board()
-        # Coloca un caballo blanco en (7, 1)
-        self.board.board[7][1] = Horse('WHITE') 
-        # Coloca otro caballo blanco en (7, 2)
-        self.board.board[7][2] = Horse('WHITE') 
-
-    def test_valid_move(self):
-        result = self.board.move_piece(7, 1, 5, 0)  # Movimiento válido del caballo
-        print(f"Resultado del movimiento válido: {result}")  # Para depuración
-        self.assertTrue(result)
-
-    def test_invalid_move(self):
-        result = self.board.move_piece(7, 1, 5, 1)  # Movimiento inválido del caballo
-        print(f"Resultado del movimiento inválido: {result}")  # Para depuración
-        self.assertFalse(result)
-
-if __name__ == "__main__":
-    unittest.main()
-
-# Verificacion de la posicion y movimiento del PEON
-
-import unittest
-from ajedres import Board, Pawn # type: ignore
-
-class TestAjedrez(unittest.TestCase):
-
-    def setUp(self):
-        self.board = Board()
-        # Coloca un peón blanco en (6, 0)
-        self.board.board[6][0] = Pawn('WHITE') 
-        # Coloca otro peón blanco en (5, 0)
-        self.board.board[5][0] = Pawn('WHITE') 
-
-    def test_valid_move(self):
-        result = self.board.move_piece(6, 0, 5, 0)  # Movimiento válido de un peón
-        print(f"Resultado del movimiento válido: {result}")  # Para depuración
-        self.assertTrue(result)
-
-    def test_invalid_move(self):
-        result = self.board.move_piece(6, 0, 5, 1)  # Movimiento inválido de un peón
-        print(f"Resultado del movimiento inválido: {result}")  # Para depuración
-        self.assertFalse(result)
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

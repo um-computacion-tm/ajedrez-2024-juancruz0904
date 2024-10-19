@@ -1,6 +1,6 @@
-# Posicion del HORSE
+# Posicion del CABALLO
 
-from pieces import Horse, Piece
+from pieces import Piece, Horse
 
 class Board:
     def __init__(self):
@@ -31,9 +31,9 @@ class Board:
     def get_piece(self, row, col):
         return self.__positions__[row][col]
     
-# Movimiento del HORSE
+# Movimiento del CABALLO
 
-class Knight(Piece):
+class Horse(Piece):
     def __init__(self, color):
         super().__init__(color)
         self.symbol = 'H' if color == 'WHITE' else 'h'

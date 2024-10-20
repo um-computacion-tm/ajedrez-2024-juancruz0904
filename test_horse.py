@@ -39,19 +39,19 @@ class TestHorseMovement(unittest.TestCase):
 
     def test_horse_cannot_capture_same_color_piece(self):
         # Colocar una pieza blanca en la posición de destino
-        self.board[4][5] = Piece('WHITE')
-        self.assertFalse(self.Horse_white.is_valid_move(4, 5, 3, 3, self.board))
+        self.board[3][3] = Piece('WHITE')
+        self.assertFalse(self.Horse_white.is_valid_move(4, 4, 3, 3, self.board))
 
         # El caballo negro debería poder moverse a esta posición
-        self.assertTrue(self.Horse_black.is_valid_move(4, 5, 3, 3, self.board))
+        self.assertTrue(self.Horse_black.is_valid_move(4, 4, 2, 3, self.board))
 
     def test_horse_can_capture_opponent_piece(self):
         # Colocar una pieza negra en la posición de destino
-        self.board[4][5] = Piece('BLACK')
-        self.assertTrue(self.Horse_white.is_valid_move(4, 5, 2, 5, self.board))
+        self.board[2][3] = Piece('BLACK')
+        self.assertTrue(self.Horse_white.is_valid_move(4, 4, 2, 3, self.board))
 
         # El caballo negro no debería poder moverse a esta posición
-        self.assertFalse(self.Horse_black.is_valid_move(4, 5, 2, 5, self.board))
+        self.assertFalse(self.Horse_black.is_valid_move(4, 4, 2, 6, self.board))
 
 if __name__ == '__main__':
     unittest.main()

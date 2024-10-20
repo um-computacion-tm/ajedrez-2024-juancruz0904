@@ -42,8 +42,8 @@ class TestKingMovement(unittest.TestCase):
 
     def test_king_cannot_capture_same_color_piece(self):
         # Colocar una pieza blanca en la posición de destino
-        self.board[5][5] = Piece('WHITE')
-        self.assertFalse(self.king_white.is_valid_move(4, 4, 5, 5, self.board))
+        self.board[5][6] = Piece('WHITE')
+        self.assertFalse(self.king_white.is_valid_move(4, 4, 5, 6, self.board))
 
         # El rey negro debería poder moverse a esta posición
         self.assertTrue(self.king_black.is_valid_move(4, 4, 5, 5, self.board))
@@ -54,7 +54,7 @@ class TestKingMovement(unittest.TestCase):
         self.assertTrue(self.king_white.is_valid_move(4, 4, 5, 5, self.board))
 
         # El rey negro no debería poder moverse a esta posición
-        self.assertFalse(self.king_black.is_valid_move(4, 4, 5, 5, self.board))
+        self.assertFalse(self.king_black.is_valid_move(4, 4, 4, 6, self.board))
 
 if __name__ == '__main__':
     unittest.main()

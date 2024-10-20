@@ -41,19 +41,19 @@ class TestRookMovement(unittest.TestCase):
 
     def test_rook_cannot_capture_same_color_piece(self):
         # Colocar una pieza blanca en la posición de destino
-        self.board[4][5] = Piece('WHITE')
-        self.assertFalse(self.Rook_white.is_valid_move(4, 4, 4, 5, self.board))
+        self.board[3][6] = Piece('WHITE')
+        self.assertFalse(self.Rook_white.is_valid_move(4, 4, 3, 6, self.board))
 
         # La torre negro debería poder moverse a esta posición
-        self.assertTrue(self.Rook_black.is_valid_move(4, 4, 4, 5, self.board))
+        self.assertTrue(self.Rook_black.is_valid_move(4, 4, 4, 6, self.board))
 
     def test_rook_can_capture_opponent_piece(self):
         # Colocar una pieza negra en la posición de destino
-        self.board[4][5] = Piece('BLACK')
-        self.assertTrue(self.Rook_white.is_valid_move(4, 4, 4, 5, self.board))
+        self.board[4][6] = Piece('BLACK')
+        self.assertTrue(self.Rook_white.is_valid_move(4, 4, 4, 6, self.board))
 
         # La torre negro no debería poder moverse a esta posición
-        self.assertFalse(self.Rook_black.is_valid_move(4, 4, 4, 5, self.board))
+        self.assertFalse(self.Rook_black.is_valid_move(4, 4, 5, 6, self.board))
 
 if __name__ == '__main__':
     unittest.main()

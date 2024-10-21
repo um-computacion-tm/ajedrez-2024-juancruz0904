@@ -68,4 +68,10 @@
 
 # 15/10/24 - Correcciones en el pieces.py
 
-# 16/10/24 - archivo de test_main.py
+# 16/10/24 - Archivo de test_main.py
+
+# 17/10/24 - Correcciones en el test_rook.py
+
+# 18/10/24 - Correcciones en el test_horse.py
+
+# 19/10/24 - Correcciones en las posiciones y movimientos del test_king.py, test_rook.py y test_horse.py

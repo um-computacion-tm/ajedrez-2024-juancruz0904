@@ -75,3 +75,9 @@
 # 18/10/24 - Correcciones en el test_horse.py
 
 # 19/10/24 - Correcciones en las posiciones y movimientos del test_king.py, test_rook.py y test_horse.py
+
+# 20/10/24 - Correcciones en el test_queen.py
+
+# 21/10/24 - Correcciones en el board.py
+
+# 22/10/24 - Correcciones en el test_bishop.py, test_pawn.py y chess.py

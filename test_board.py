@@ -16,12 +16,12 @@ class Rook:
     def __str__(self):
         return "R" if self.color == 'WHITE' else "r"
 
-class Horse:
+class Knight:
     def __init__(self, color):
         self.color = color
 
     def __str__(self):
-        return "H" if self.color == 'WHITE' else "h"
+        return "N" if self.color == 'WHITE' else "n"
 
 class Bishop:
     def __init__(self, color):
@@ -67,13 +67,13 @@ class TestBoardSetup(unittest.TestCase):
         self.assertEqual(board.get_piece(7, 7).color, 'WHITE')
 
         # Verificar caballos
-        self.assertIsInstance(board.get_piece(0, 1), Horse)
+        self.assertIsInstance(board.get_piece(0, 1), Knight)
         self.assertEqual(board.get_piece(0, 1).color, 'BLACK')
-        self.assertIsInstance(board.get_piece(0, 6), Horse)
+        self.assertIsInstance(board.get_piece(0, 6), Knight)
         self.assertEqual(board.get_piece(0, 6).color, 'BLACK')
-        self.assertIsInstance(board.get_piece(7, 1), Horse)
+        self.assertIsInstance(board.get_piece(7, 1), Knight)
         self.assertEqual(board.get_piece(7, 1).color, 'WHITE')
-        self.assertIsInstance(board.get_piece(7, 6), Horse)
+        self.assertIsInstance(board.get_piece(7, 6), Knight)
         self.assertEqual(board.get_piece(7, 6).color, 'WHITE')
 
         # Verificar alfiles

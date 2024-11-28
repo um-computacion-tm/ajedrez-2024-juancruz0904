@@ -1,6 +1,6 @@
 # Posicion del CABALLO
 
-from pieces import Piece, Horse
+from pieces import Piece, Knight
 
 class Board:
     def __init__(self):
@@ -10,10 +10,10 @@ class Board:
             for _ in range(8):
                 col.append(None)
             self.positions.append(col)
-        self.positions[0][1] = Horse("Black") # Black
-        self.positions[0][6] = Horse("Black") # Black
-        self.positions[7][1] = Horse("White") # White
-        self.positions[7][6] = Horse("White") # White
+        self.positions[0][1] = Knight("Black") # Black
+        self.positions[0][6] = Knight("Black") # Black
+        self.positions[7][1] = Knight("White") # White
+        self.positions[7][6] = Knight("White") # White
 
 # forma del tablero
 
@@ -33,10 +33,10 @@ class Board:
     
 # Movimiento del CABALLO
 
-class Horse(Piece):
+class Knight(Piece):
     def __init__(self, color):
         super().__init__(color)
-        self.symbol = 'H' if color == 'WHITE' else 'h'
+        self.symbol = 'N' if color == 'WHITE' else 'n'
 
     def is_valid_move(self, from_row, from_col, to_row, to_col, board):
         # El caballo se mueve en forma de "L"

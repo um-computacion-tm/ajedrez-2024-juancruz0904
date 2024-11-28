@@ -1,4 +1,4 @@
-# Posicion de la QUEEN
+# Posicion de la REINA
 
 from pieces import Piece, Queen
 
@@ -29,7 +29,7 @@ class Board:
     def get_piece(self, row, col):
         return self.__positions__[row][col]
     
-# Movimiento de la QUEEN
+# Movimiento de la REINA
 
 class Queen(Piece):
     def __init__(self, color):

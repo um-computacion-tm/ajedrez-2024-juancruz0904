@@ -1,6 +1,6 @@
 # Posicion del REY
 
-import horse
+import knight
 from pieces import King, Piece, pieces
 
 class Board:
@@ -87,7 +87,7 @@ class Board:
             row, col = king_row + move[0], king_col + move[1]
             if 0 <= row < 8 and 0 <= col < 8:
                 piece = self.board[row][col]
-                if piece and piece.color == opponent_color and isinstance(piece, horse):
+                if piece and piece.color == opponent_color and isinstance(piece, knight):
                     return True
 
         return False

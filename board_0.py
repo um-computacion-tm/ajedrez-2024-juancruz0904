@@ -35,7 +35,7 @@ class Board:
 
     def move_piece(self, from_row, from_col, to_row, to_col):
         piece = self.get_piece(from_row, from_col)
-        if piece and piece.is_valid_move(from_row, from_col, to_row, to_col, self.board):
+        if piece and piece.is_valid_move(from_row, from_col, to_row, to_col):
             self.board[to_row][to_col] = piece
             self.board[from_row][from_col] = None
             return True
@@ -48,22 +48,17 @@ class Piece:
         self.color = color
         self.symbol = ""
 
-    def is_valid_move(self, from_row, from_col, to_row, to_col, board):
+    def is_valid_move(self, from_row, from_col, to_row, to_col):
         raise NotImplementedError("This method should be overridden in subclasses.")
 
     def __str__(self):
-        return self.symbol    
- 
-class Horse(Piece):
+        return self.symbol
+
+class Knight(Piece):
     def __init__(self, color):
         super().__init__(color)
-        self.symbol = 'H' if color == 'WHITE' else 'h'
-        
-    def is_valid_move(self, from_row, from_col, to_row, to_col, board):
-        # Lógica de movimiento del peón
-        return True    
-        
-    
+        self.symbol = 'R' if color == 'WHITE' else 'r'        
+
 class Pawn(Piece):
     def __init__(self, color):
         super().__init__(color)
@@ -82,14 +77,10 @@ class Rook(Piece):
         # Lógica de movimiento de la torre
         return True
 
-class Knight(Piece):
+class King(Piece):
     def __init__(self, color):
         super().__init__(color)
-        self.symbol = 'N' if color == 'WHITE' else 'n'
-
-    def is_valid_move(self, from_row, from_col, to_row, to_col, board):
-        # Lógica de movimiento del caballo
-        return True
+        self.symbol = 'K' if color == 'WHITE' else 'k'
 
 class Bishop(Piece):
     def __init__(self, color):
@@ -109,18 +100,16 @@ class Queen(Piece):
         # Lógica de movimiento de la reina
         return True
 
+
 class King(Piece):
     def __init__(self, color):
         super().__init__(color)
         self.symbol = 'K' if color == 'WHITE' else 'k'
 
-    def is_valid_move(self, from_row, from_col, to_row, to_col, board):
-        # Lógica de movimiento del rey
-        return True
-
     def move_piece(self, from_row, from_col, to_row, to_col):
         piece = self.get_piece(from_row, from_col)
         if piece and piece.is_valid_move(from_row, from_col, to_row, to_col, self.board):
+            # Realiza el movimiento de la pieza
             self.board[to_row][to_col] = piece
             self.board[from_row][from_col] = None
             
@@ -145,6 +134,7 @@ class King(Piece):
     def is_in_check(self, king_position, king_color):
         king_row, king_col = king_position
         opponent_color = 'BLACK' if king_color == 'WHITE' else 'WHITE'
+        
         # Revisar las direcciones posibles para encontrar piezas enemigas que puedan atacar al rey
         directions = [(-1, 0), (1, 0), (0, -1), (0, 1), (-1, -1), (-1, 1), (1, -1), (1, 1)]
         

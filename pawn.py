@@ -1,4 +1,4 @@
-# Posicion del PAWN
+# Posicion del PEON
 
 from pieces import Piece, Pawn
 
@@ -67,5 +67,5 @@ class Pawn(Piece):
         if abs(from_col - to_col) == 1 and to_row == from_row + direction:
             if board[to_row][to_col] is not None and board[to_row][to_col].color != self.color:                
                 return True
-
-        return False
+            
+            return False

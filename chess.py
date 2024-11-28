@@ -8,6 +8,10 @@ class Chess:
     def is_playing(self):
         return True
 
+    @property
+    def turn(self):
+        return self.__turn__
+
     def move(
         self,
         from_row,
@@ -15,17 +19,19 @@ class Chess:
         to_row,
         to_col,
     ):
-        # validate coords
+        # Validar las coordenadas
         piece = self.__board__.get_piece(from_row, from_col)
+        if piece is None:
+            raise ValueError("No hay una pieza en la posición de inicio especificada.")
+        
+        # Mover la pieza en el tablero
+        self.__board__.move_piece(from_row, from_col, to_row, to_col)
+        # Cambiar de turno
         self.change_turn()
-
-    @property
-    def turn(self):
-        return self.__turn__
 
     def show_board(self):
         print(self.__board__)  # Esto imprime el tablero
-
+    
     def change_turn(self):
         self.__turn__ = "BLACK" if self.__turn__ == "WHITE" else "WHITE"
 
@@ -40,7 +46,7 @@ if __name__ == "__main__":
         if len(from_input.split()) != 2:
             raise ValueError("Debes ingresar dos valores para la fila y la columna.")
         from_row, from_col = map(int, from_input.split())
-            
+             
         # Obtener las coordenadas de destino
         to_input = input("Hasta (fila columna): ").strip()
         if len(to_input.split()) != 2:
